@@ -5,13 +5,9 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { SharedService } from "./shared/services/shared.service";
 import { routing } from './app.routing';
-import {AuthService} from "./auth.service";
-import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
-import {UsersService} from "./users.service";
-import {ProfileService} from "./profile.service";
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -26,14 +22,10 @@ import {ProfileService} from "./profile.service";
     AppComponent
   ],
   providers: [
-    SharedService,
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
-    },
-    AuthService,
-    UsersService,
-    ProfileService
+    }
   ],
   bootstrap: [AppComponent]
 })
