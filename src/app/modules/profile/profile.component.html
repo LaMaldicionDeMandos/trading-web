@@ -1,0 +1,279 @@
+<section class="content">
+  <header class="content__title">
+    <h1>{{profile.first_name}} {{profile.last_name}}</h1>
+    <small>{{profile.job_title}}</small>
+  </header>
+
+  <div class="card" id="profile-main">
+    <div class="pm-overview c-overview">
+      <div class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside">
+        <div class="mCSB_container mCS_x_hidden mCS_no_scrollbar_x mCS_y_hidden mCS_no_scrollbar_y">
+          <div class="pmo-pic">
+            <div class="p-relative">
+              <lazuly-avatar *ngIf="profile" [url]="profile.image" [name]="profile.first_name + ' ' + profile.last_name"
+                             [size]="'200'" ></lazuly-avatar>
+
+              <!--
+              <a href="">
+                <img class="img-responsive" [src]="profile.image">
+              </a>
+
+              <div class="dropdown pmop-message">
+                <button class="btn bgm-white btn-float dropdown-toggle waves-effect waves-circle">
+                  <i class="zmdi zmdi-comment-text-alt"></i>
+                </button>
+              </div>
+              -->
+              <a href="" class="pmop-edit">
+                <i class="zmdi zmdi-camera"></i>
+                <span class="hidden-xs">Cambiar imagen de perfil</span>
+              </a>
+            </div>
+            <div class="pmo-stat">
+              <h2 class="m-0 c-white">{{profile.first_name}} {{profile.last_name}}</h2>
+              <span>{{profile.job_title}}</span>
+            </div>
+          </div>
+          <div class="pmo-block pmo-contact hidden-xs">
+            <h2>Contacto</h2>
+
+            <ul>
+              <li *ngIf="profile.phone"><i class="zmdi zmdi-phone"></i> {{profile.phone}}</li>
+
+              <li *ngIf="profile.contact_email"><i class="zmdi zmdi-email"></i>
+                <a href="mailto://{{profile.contact_email}}">
+                  {{profile.contact_email}}
+                </a></li>
+              <li *ngIf="profile.facebook"><i class="zmdi zmdi-facebook-box"></i>
+                {{profile.facebook}}</li>
+
+
+              <li *ngIf="profile.skype"><i class="zmdi zmdi-skype"></i> {{profile.skype}}</li>
+              <li *ngIf="profile.twitter"><i class="zmdi zmdi-twitter"></i> {{profile.twitter}}</li>
+              <li *ngIf="profile.address">
+                <i class="zmdi zmdi-pin"></i>
+                <address class="m-b-0">
+                  {{profile.address}}
+                </address>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pm-body">
+      <div class="pmb-block">
+        <div class="pmbb-header">
+          <h2>
+            <i class="zmdi zmdi-equalizer"></i>
+            Resumen
+          </h2>
+          <div class="actions" (click)="editSummary = true">
+            <div dropdown>
+              <i class="actions__item zmdi zmdi-edit" ></i>
+            </div>
+          </div>
+        </div>
+        <div class="p-l-30">
+          <div [hidden]="editSummary" class="form-control-label">{{profile.summary}}</div>
+          <form [hidden]="!editSummary" class="pmbb-edit">
+            <div class="fg-line">
+              <textarea [(ngModel)]="form.summary" name="profileSummary" class="form-control" rows="5" placeholder="Resumen" >{{form.summary}}</textarea>
+            </div>
+            <div class="m-t-10">
+              <button class="btn btn-primary btn-sm waves-effect" type="submit" (click)="change('Summary')">Guardar</button>
+              <button class="btn btn-link btn-sm waves-effect" type="submit" (click)="cancel('Summary')">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="pmb-block">
+        <div class="pmbb-header">
+          <h2>
+            <i class="zmdi zmdi-person m-r-5"></i>
+            Información Básica
+          </h2>
+          <div class="actions" (click)="editBasic = true">
+            <div dropdown>
+              <i class="actions__item zmdi zmdi-edit"></i>
+            </div>
+          </div>
+        </div>
+        <div class="p-l-30">
+          <div [hidden]="editBasic">
+            <dl class="dl-horizontal" [hidden]="!profile.first_name">
+              <dt>Nombre</dt>
+              <dd>{{profile.first_name}}</dd>
+            </dl>
+            <dl class="dl-horizontal"[hidden]="!profile.last_name">
+              <dt>Apellido</dt>
+              <dd>{{profile.last_name}}</dd>
+            </dl>
+            <dl class="dl-horizontal" [hidden]="!profile.job_title">
+              <dt>Cargo</dt>
+              <dd>{{profile.job_title}}</dd>
+            </dl>
+            <dl class="dl-horizontal" [hidden]="!profile.bird_date">
+              <dt>Fecha de Nacimiento</dt>
+              <dd>{{profile.bird_date}}</dd>
+            </dl>
+          </div>
+          <form [hidden]="!editBasic" class="pmbb-edit">
+            <dl class="dl-horizontal">
+              <dt class="p-t-10">Nombre</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.first_name" name="profileFirstName" type="text" class="form-control"
+                         placeholder="Ej. Marcelo">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <dt class="p-t-10">Apellido</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.last_name" name="profileLastName" type="text" class="form-control"
+                         placeholder="Ej. Pasut">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <dt class="p-t-10">Cargo</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.job_title" name="profileJobTitle" type="text" class="form-control"
+                         placeholder="Ej. Director">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <dt class="p-t-10">Fecha de Nacimiento</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.bird_date" name="profileBirdDate" type="text" class="form-control"
+                         placeholder="Ej. 31/03/1981">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <div class="m-t-10">
+              <button class="btn btn-primary btn-sm waves-effect" type="submit" (click)="change('Basic')">Guardar</button>
+              <button class="btn btn-link btn-sm waves-effect" type="submit" (click)="cancel('Basic')">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="pmb-block">
+        <div class="pmbb-header">
+          <h2>
+            <i class="zmdi zmdi-phone m-r-5"></i>
+            Información de Contacto
+          </h2>
+          <div class="actions" (click)="editContact = true">
+            <div dropdown>
+              <i class="actions__item zmdi zmdi-edit"></i>
+            </div>
+          </div>
+        </div>
+        <div class="p-l-30">
+          <div [hidden]="editContact">
+            <dl class="dl-horizontal" [hidden]="!profile.phone">
+              <dt><i class="zmdi zmdi-phone"></i> Teléfono</dt>
+              <dd>{{profile.phone}}</dd>
+            </dl>
+            <dl class="dl-horizontal" [hidden]="!profile.contact_email">
+              <dt><i class="zmdi zmdi-email"></i> Email</dt>
+              <dd>{{profile.contact_email}}</dd>
+            </dl>
+            <dl class="dl-horizontal" [hidden]="!profile.facebook">
+              <dt><i class="zmdi zmdi-facebook-box"></i> Facebook</dt>
+              <dd>{{profile.facebook}}</dd>
+            </dl>
+            <dl class="dl-horizontal" [hidden]="!profile.skype">
+              <dt><i class="zmdi zmdi-skype"></i> Skype</dt>
+              <dd>{{profile.skype}}</dd>
+            </dl>
+            <dl class="dl-horizontal" [hidden]="!profile.twitter">
+              <dt><i class="zmdi zmdi-twitter"></i> Twitter</dt>
+              <dd>{{profile.twitter}}</dd>
+            </dl>
+            <dl class="dl-horizontal" [hidden]="!profile.address">
+              <dt><i class="zmdi zmdi-pin"></i> Dirección</dt>
+              <dd>{{profile.address}}</dd>
+            </dl>
+          </div>
+          <form [hidden]="!editContact" class="pmbb-edit">
+            <dl class="dl-horizontal">
+              <dt class="p-t-10"><i class="zmdi zmdi-phone"></i> Teléfono</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.phone" name="contactPhone" type="text" class="form-control"
+                         placeholder="Ej. 15-6408-0807">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <dt class="p-t-10"><i class="zmdi zmdi-email"></i> Email</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.contact_email" name="contactEmail" type="text" class="form-control"
+                         placeholder="Ej. pasutmarcelo@gmail.com">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <dt class="p-t-10"><i class="zmdi zmdi-facebook-box"></i> Facebook</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.facebook" name="contactFacebook" type="text" class="form-control"
+                         placeholder="Ej. marcelo.pasut">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <dt class="p-t-10"><i class="zmdi zmdi-skype"></i> Skype</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.skype" name="contactSkype" type="text" class="form-control"
+                         placeholder="Ej. mpasut">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <dt class="p-t-10"><i class="zmdi zmdi-twitter"></i> Twitter</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.twitter" name="contactTwitter" type="text" class="form-control"
+                         placeholder="Ej. @lamaldiciondemandos">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <dl class="dl-horizontal">
+              <dt class="p-t-10"><i class="zmdi zmdi-pin"></i> Dirección</dt>
+              <dd>
+                <div class="fg-line">
+                  <input [(ngModel)]="form.address" name="contactAddress" type="text" class="form-control"
+                         placeholder="Ej. Lavalleja, 1745, Quilmes Oeste, Buenos Aires">
+                  <i class="form-group__bar"></i>
+                </div>
+              </dd>
+            </dl>
+            <div class="m-t-10">
+              <button class="btn btn-primary btn-sm waves-effect" type="submit" (click)="change('Contact')">Guardar</button>
+              <button class="btn btn-link btn-sm waves-effect" type="submit" (click)="cancel('Contact')">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,62 @@
+<header class="header">
+  <div class="header__logo ">
+    <h1><a [routerLink]="['']">Lázuly</a></h1>
+  </div>
+</header>
+<div class="container white z-depth-2">
+  <div class="card" >
+    <h1 class="card-title">Lázuly Ingresá</h1>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="input-group">
+            <div class="form-group">
+              <input [(ngModel)]="user.username" type="text" name="username" class="form-control form-control-lg" placeholder="Email">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="input-group">
+            <div class="form-group">
+              <input [(ngModel)]="user.password" type="password" name="password" class="form-control form-control-lg" placeholder="Contraseña"
+                     (keyup.enter)="login()">
+              <i class="form-group__bar"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button class="float-right btn btn-link" (click)="ModalForgotPassword.show()">Olvidé mi contraseña</button>
+        </div>
+      </div>
+      <div class="row">
+        <alert [hidden]="!errors" type="danger">
+          El email o la password son incorrectos, por favor contacte a su administrador.
+        </alert>
+      </div>
+      <div class="btn-login">
+        <button (click)="login()" (keyup.enter)="login()" type="button" class="btn btn-lg btn-primary float-right">Ingresar</button>
+      </div>
+    </div>
+  </div>
+  <div bsModal #ModalForgotPassword="bs-modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title pull-left">Olvidé mi contraseña</h5>
+        </div>
+        <div class="modal-body">
+          Ingresá tu email y te enviaremos un mail para cambiar tu contraseña.
+          <input [(ngModel)]="forgotEmail" type="email" name="forgetPassword" class="form-control form-control-lg" placeholder="Email">
+          <i class="form-group__bar"></i>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" (click)="ModalForgotPassword.hide();forgot()">Enviar</button>
+        </div>
+      </div>
+    </div>
+</div>

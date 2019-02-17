@@ -1,0 +1,21 @@
+<div class="lazuly-avatar"
+     *ngIf="props"
+
+     [style.background-color]="props.background"
+     [style.width]="props.size"
+     [style.line-height]='props.lineheight'
+     [style.height]='props.size'
+     [style.font-size]='props.fontSize'
+     [style.border-radius]='props.borderradius'
+     [style.margin-right]="'0.8rem'">
+  <img *ngIf="displayImage"
+       [src]="finalUrl"
+       (error)="displayImage = false;"
+       alt="{{name}} | {{letter}}"
+       [style.width]="props.size"
+       [style.height]="props.size"
+       [style.border-radius]="'50%'"
+       [style.margin-right]="'0.8rem'"
+  />
+  <span *ngIf="!displayImage" [style.color]='fontColor'>{{letter}}</span>
+</div>
