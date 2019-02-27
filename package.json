@@ -1,10 +1,10 @@
 {
-  "name": "Trading Web",
+  "name": "TradingWeb",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4201 --env=developer",
+    "start": "ng serve --port 4200 --env=developer",
     "build": "ng build --env=developer",
     "test": "ng test",
     "lint": "ng lint",

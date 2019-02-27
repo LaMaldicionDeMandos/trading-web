@@ -1,9 +1,6 @@
 import { Component, OnInit, trigger, state, style, transition, animate} from '@angular/core';
 import { SharedService } from "../../shared/services/shared.service";
 
-import {AuthService} from "../../auth.service";
-import {Credentials} from "../../credentials";
-
 @Component({
     selector: 'lazuly-navigation',
     templateUrl: './navigation.component.html',
@@ -51,25 +48,18 @@ export class NavigationComponent implements OnInit {
         this.navigationSubState[menu] = (this.navigationSubState[menu] === 'inactive' ? 'active' : 'inactive');
     }
 
-    constructor(private sharedService: SharedService, private authService: AuthService) {
+    constructor(private sharedService: SharedService) {
         sharedService.sidebarVisibilitySubject.subscribe((value) => {
             this.sidebarVisible = value
         })
     }
 
     ngOnInit() {
-      let credentials:Credentials = this.authService.getCredentials();
-      this.firstName = credentials.first_name;
-      this.lastName = credentials.last_name;
+      this.firstName = 'Saraza';
+      this.lastName = 'Fruta';
       this.name = `${this.firstName} ${this.lastName}`.trim();
-      this.email = credentials.email;
-
-      this.authService.hasPermission(this.USER_CRUD).subscribe((has) => {
-        console.log("has user_crud? " + has);
-        this.crudUserPermission = has;});
+      this.email = 'Email';
     }
 
-    logout():void {
-      this.authService.logout();
-    }
+    logout():void {}
 }

@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UsersService} from "../../users.service";
 import {User} from "../../model/user";
-import {AuthService} from "../../auth.service";
 import {Role} from "../../model/role";
 import _ from "lodash";
 import swal from "sweetalert2";
@@ -21,17 +19,11 @@ export class UsersComponent implements OnInit {
     newUser:User = new User();
     selectedRole:Role;
 
-    constructor(private userService:UsersService, private authService:AuthService) {
+    constructor() {
 
     }
 
     ngOnInit() {
-      this.authService.getRolesBo().subscribe((roles) => {
-        this.roles = roles;
-        this.userService.getUsers()
-          .map((users:User[]) => users.filter((user:User) => _.some(roles, (role) => this.hasRole(user, role))))
-          .subscribe((users) => this.users = users);
-      });
     }
 
     private hasRole(user, role):boolean {
@@ -60,6 +52,7 @@ export class UsersComponent implements OnInit {
 
     removeRole(role:Role, user:User) {
       this.removeRoleFrom(user, role);
+      /*
       this.userService.changeUser(user).subscribe(() => console.log('success'), () =>
         swal({
           html: "<span style='color:#ffffff'>Ops, parece que no pudimos eliminar el rol de este usuario, por favor intenta mas tarde.</span>",
@@ -69,10 +62,12 @@ export class UsersComponent implements OnInit {
           timer: 2500,
           showConfirmButton: false
         }));
+        */
     }
 
     addRole(role:Role, user:User) {
       user.roles.push(role);
+      /*
       this.userService.changeUser(user).subscribe(() => console.log('success'), () =>
         swal({
           html: "<span style='color:#ffffff'>Ops, parece que no pudimos agregar el rol de este usuario, por favor intenta mas tarde.</span>",
@@ -82,12 +77,14 @@ export class UsersComponent implements OnInit {
           timer: 2500,
           showConfirmButton: false
         }));
+        */
     }
 
     addUser(modal) {
       modal.hide();
       console.log(`New User ${JSON.stringify(this.newUser)} con su role ${JSON.stringify(this.selectedRole)}`);
       this.newUser.roles = [this.selectedRole];
+      /*
       this.userService.addUser(this.newUser).subscribe(
         (user) => {
           this.users.push(this.newUser);
@@ -101,6 +98,7 @@ export class UsersComponent implements OnInit {
           timer: 2500,
           showConfirmButton: false
         }));
+        */
     }
 
 }

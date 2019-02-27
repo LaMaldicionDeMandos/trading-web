@@ -15,6 +15,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NavigationTriggerComponent } from './header/navigation-trigger/navigation-trigger.component';
 
 import { LazulyAvatarModule } from '../modules/avatar/lazuly-avatar.module';
+import {SharedService} from '../shared/services/shared.service';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -36,7 +37,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ButtonsModule.forRoot(),
     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
     LazulyAvatarModule.forRoot()
-  ]
+  ],
+  providers: [SharedService]
 })
 
 export class DashboardModule {  }
