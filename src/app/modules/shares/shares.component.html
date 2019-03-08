@@ -1,7 +1,18 @@
 <section class="content">
     <header class="content__title">
-        <h1>Titulos</h1>
-        <small>Aministración de titulos</small>
+      <h1>Indices</h1>
+      <div class="dropdown-container">
+        <div class="btn-group" dropdown>
+          <button id="button-basic" dropdownToggle type="button" class="btn btn-light dropdown-toggle"
+                  aria-controls="dropdown-basic">
+            [CURRENT_INDEX] <span class="caret"></span>
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item" href="#">BCBA</a></li>
+          </ul>
+        </div>
+      </div>
     </header>
 
     <div class="row">

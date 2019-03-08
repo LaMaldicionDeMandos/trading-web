@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from "../../shared/services/shared.service";
+import { SharedService } from '../../shared/services/shared.service';
 
 @Component({
-  selector: 'lazuly-header',
+  selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: [
     './header.component.scss'

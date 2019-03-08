@@ -1,8 +1,8 @@
 import { Component, OnInit, trigger, state, style, transition, animate} from '@angular/core';
-import { SharedService } from "../../shared/services/shared.service";
+import { SharedService } from '../../shared/services/shared.service';
 
 @Component({
-    selector: 'lazuly-navigation',
+    selector: 'app-navigation',
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.scss'],
     animations: [
@@ -22,9 +22,7 @@ import { SharedService } from "../../shared/services/shared.service";
 })
 
 export class NavigationComponent implements OnInit {
-    USER_CRUD:string = "user_crud";
     sidebarVisible: boolean;
-    crudUserPermission: boolean;
 
     // Sub menu visibilities
     navigationSubState:any = {
@@ -35,31 +33,12 @@ export class NavigationComponent implements OnInit {
         Components: 'inactive',
         Charts: 'inactive',
     };
-
-    firstName:string;
-    lastName:string;
-    name:string;
-    email:string;
-
-
     // Toggle sub menu
-    toggleNavigationSub(menu, event) {
-        event.preventDefault();
-        this.navigationSubState[menu] = (this.navigationSubState[menu] === 'inactive' ? 'active' : 'inactive');
-    }
-
     constructor(private sharedService: SharedService) {
         sharedService.sidebarVisibilitySubject.subscribe((value) => {
-            this.sidebarVisible = value
-        })
+            this.sidebarVisible = value;
+        });
     }
 
-    ngOnInit() {
-      this.firstName = 'Saraza';
-      this.lastName = 'Fruta';
-      this.name = `${this.firstName} ${this.lastName}`.trim();
-      this.email = 'Email';
-    }
-
-    logout():void {}
+    ngOnInit() {}
 }
