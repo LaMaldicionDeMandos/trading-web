@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {ApiClient} from './services/api_client';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
-    }
+    },
+    ApiClient
   ],
   bootstrap: [AppComponent]
 })

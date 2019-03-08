@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ApiClient} from '../../services/api_client';
 
 const typeDecorator = Component({
   selector: 'app-shares',
@@ -10,7 +11,11 @@ const typeDecorator = Component({
 @typeDecorator
 
 export class SharesComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit() {}
+    constructor(private apiClient: ApiClient) {}
+    // TODO Esto obtenerlo del local storage, de lo contrario settear el primero de la lista
+    private current_index = 'BCBA';
+    private indexes: String[];
+    ngOnInit() {
+      this.apiClient.getIndexes().subscribe((indexes) => this.indexes = indexes);
+    }
 }

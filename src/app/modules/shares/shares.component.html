@@ -5,11 +5,11 @@
         <div class="btn-group" dropdown>
           <button id="button-basic" dropdownToggle type="button" class="btn btn-light as-backcround dropdown-toggle"
                   aria-controls="dropdown-basic">
-            [CURRENT_INDEX] <span class="caret"></span>
+            {{current_index}} <span class="caret"></span>
           </button>
           <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
               role="menu" aria-labelledby="button-basic">
-            <li role="menuitem"><a class="dropdown-item" href="#">BCBA</a></li>
+            <li *ngFor="let index of indexes" role="menuitem"><a class="dropdown-item" href="#">{{index}}</a></li>
           </ul>
         </div>
       </div>
