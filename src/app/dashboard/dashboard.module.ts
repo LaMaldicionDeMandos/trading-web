@@ -1,21 +1,21 @@
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-import { NgModule } from "@angular/core";
-import { DashboardRouting } from "./dashboard.routing";
+import { NgModule } from '@angular/core';
+import { DashboardRouting } from './dashboard.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ButtonsModule } from 'ngx-bootstrap';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
-import { DashboardComponent } from "./dashboard.component";
+import { DashboardComponent } from './dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NavigationTriggerComponent } from './header/navigation-trigger/navigation-trigger.component';
 
-import { LazulyAvatarModule } from '../modules/avatar/lazuly-avatar.module';
 import {SharedService} from '../shared/services/shared.service';
+import {SharesComponent} from '../modules/shares/shares.component';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -36,7 +36,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ProgressbarModule.forRoot(),
     ButtonsModule.forRoot(),
     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
-    LazulyAvatarModule.forRoot()
   ],
   providers: [SharedService]
 })

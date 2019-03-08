@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 const DASHBOARD_ROUTES: Routes = [
     { path: '', component: DashboardComponent, children: [
         { path: '', redirectTo: 'home', pathMatch: 'full' },
-        { path: 'home', loadChildren: '../modules/users/users.module#UsersModule' },
+        { path: 'home', loadChildren: '../modules/shares/shares.module#SharesModule' },
     ]}
 ];
 
