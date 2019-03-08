@@ -15,7 +15,6 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NavigationTriggerComponent } from './header/navigation-trigger/navigation-trigger.component';
 
 import {SharedService} from '../shared/services/shared.service';
-import {SharesComponent} from '../modules/shares/shares.component';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
